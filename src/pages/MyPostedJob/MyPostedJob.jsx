@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import UseAuth from "../../hooks/UseAuth";
-import { Link } from "lucide-react";
+import { Link } from "react-router";
 
 const MyPostedJob = () => {
   const [postedJobs, setPostedJobs] = useState([]);
@@ -59,7 +59,7 @@ console.log("Posted Jobs:", postedJobs);
                   <td className="p-3">{job.salaryRange}</td>
                   <td className="p-3">{job.applicationDeadline}</td>
                   <Link to={`/viewapplication/${job._id}`} className="p-3">
-                  <button className="btn btn-accent">View Application</button>
+                  <button className="btn bg-cyan-500 hover:bg-cyan-600 px-4 py-2 text-white">View Application</button>
                   </Link>
                 </tr>
               ))}

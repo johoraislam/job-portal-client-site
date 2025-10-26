@@ -4,7 +4,7 @@ import { MapPin } from "lucide-react";
 const JobDetails = () => {
   const job = useLoaderData();
 
-  console.log("Job Details:", JSON.stringify(job, null, 2));
+  // console.log("Job Details:", JSON.stringify(job, null, 2));
 
   if (!job || job.message) {
     // Invalid ID or Job not found

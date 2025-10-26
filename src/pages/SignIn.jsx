@@ -3,13 +3,15 @@ import animationLottieData from "../assets/Login.json"
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import { useLocation, useNavigate } from "react-router";
+import { em } from "motion/react-client";
+import axios from "axios";
 
 const SignIn = () => {
     const {signInUser} = useContext(AuthContext)
     const location = useLocation()
-    console.log(location)
-    const navigate = useNavigate()
-    const from = location.state || '/';
+    // console.log(location)
+    // const navigate = useNavigate()
+    // const from = location.state || '/';
     const handleSignIn = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -19,9 +21,13 @@ const SignIn = () => {
         signInUser(email,password)
         .then((userCredential) => {
             // Signed in 
-            const user = userCredential.user;
-           console.log(user)
-            navigate(from,{replace:true})
+           let email2 = {email: userCredential.user.email}
+           axios.post('http://localhost:3000/jwt',email2,{withCredentials:true})
+           .then(res =>{
+            console.log(res.data)
+            // localStorage.setItem('job-token',data.data.token)
+           })
+            // navigate(from,{replace:true})
           })
           .catch((error) => {
             const errorCode = error.code;

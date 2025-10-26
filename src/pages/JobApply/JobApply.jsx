@@ -44,7 +44,7 @@ const JobApply = () => {
 
     const jobApplication = {
       jobId: id,
-      applicantEmail: user?.email, 
+      applicant_email: user?.email,
       github: formData.github,
       resume: formData.resume,
       coverLetter: formData.coverLetter,
